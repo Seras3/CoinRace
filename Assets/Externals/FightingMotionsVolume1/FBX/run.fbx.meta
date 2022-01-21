@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3ff1228a6fef1834f96812bc96c1d41b
+guid: f945fd14b41105b44bea01601e3ab21e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -11,70 +11,136 @@ ModelImporter:
     second: Body
   - first:
       1: 100004
-    second: Chest
+    second: Body 1
   - first:
       1: 100006
-    second: Collar_L
+    second: Chest
   - first:
       1: 100008
-    second: Collar_R
+    second: Chest 1
   - first:
       1: 100010
-    second: Foot_L
+    second: Collar_L
   - first:
       1: 100012
-    second: Foot_R
+    second: Collar_L 1
   - first:
       1: 100014
-    second: ForeArm_L
+    second: Collar_R
   - first:
       1: 100016
-    second: ForeArm_R
+    second: Collar_R 1
   - first:
       1: 100018
-    second: Hand_L
+    second: Foot_L
   - first:
       1: 100020
-    second: Hand_R
+    second: Foot_L 1
   - first:
       1: 100022
-    second: Head
+    second: Foot_R
   - first:
       1: 100024
-    second: Hip
+    second: Foot_R 1
   - first:
       1: 100026
-    second: //RootNode
+    second: ForeArm_L
   - first:
       1: 100028
-    second: Neck
+    second: ForeArm_L 1
   - first:
       1: 100030
-    second: Root
+    second: ForeArm_R
   - first:
       1: 100032
-    second: Shin_L
+    second: ForeArm_R 1
   - first:
       1: 100034
-    second: Shin_R
+    second: Hand_L
   - first:
       1: 100036
-    second: Shoulder_L
+    second: Hand_L 1
   - first:
       1: 100038
-    second: Shoulder_R
+    second: Hand_R
   - first:
       1: 100040
-    second: Thigh_L
+    second: Hand_R 1
   - first:
       1: 100042
-    second: Thigh_R
+    second: Head
   - first:
       1: 100044
-    second: Toe_L
+    second: Head 1
   - first:
       1: 100046
+    second: Hip
+  - first:
+      1: 100048
+    second: Hip 1
+  - first:
+      1: 100050
+    second: //RootNode
+  - first:
+      1: 100052
+    second: Neck
+  - first:
+      1: 100054
+    second: Neck 1
+  - first:
+      1: 100056
+    second: Shin_L
+  - first:
+      1: 100058
+    second: Shin_L 1
+  - first:
+      1: 100060
+    second: Shin_R
+  - first:
+      1: 100062
+    second: Shin_R 1
+  - first:
+      1: 100064
+    second: Shoulder_L
+  - first:
+      1: 100066
+    second: Shoulder_L 1
+  - first:
+      1: 100068
+    second: Shoulder_R
+  - first:
+      1: 100070
+    second: Shoulder_R 1
+  - first:
+      1: 100072
+    second: Thigh_L
+  - first:
+      1: 100074
+    second: Thigh_L 1
+  - first:
+      1: 100076
+    second: Thigh_R
+  - first:
+      1: 100078
+    second: Thigh_R 1
+  - first:
+      1: 100080
+    second: Toe_L
+  - first:
+      1: 100082
+    second: Toe_L 1
+  - first:
+      1: 100084
     second: Toe_R
+  - first:
+      1: 100086
+    second: Toe_R 1
+  - first:
+      1: 100088
+    second: Root
+  - first:
+      1: 100090
+    second: Root 1
   - first:
       4: 400000
     second: BlueGuy
@@ -83,76 +149,142 @@ ModelImporter:
     second: Body
   - first:
       4: 400004
-    second: Chest
+    second: Body 1
   - first:
       4: 400006
-    second: Collar_L
+    second: Chest
   - first:
       4: 400008
-    second: Collar_R
+    second: Chest 1
   - first:
       4: 400010
-    second: Foot_L
+    second: Collar_L
   - first:
       4: 400012
-    second: Foot_R
+    second: Collar_L 1
   - first:
       4: 400014
-    second: ForeArm_L
+    second: Collar_R
   - first:
       4: 400016
-    second: ForeArm_R
+    second: Collar_R 1
   - first:
       4: 400018
-    second: Hand_L
+    second: Foot_L
   - first:
       4: 400020
-    second: Hand_R
+    second: Foot_L 1
   - first:
       4: 400022
-    second: Head
+    second: Foot_R
   - first:
       4: 400024
-    second: Hip
+    second: Foot_R 1
   - first:
       4: 400026
-    second: //RootNode
+    second: ForeArm_L
   - first:
       4: 400028
-    second: Neck
+    second: ForeArm_L 1
   - first:
       4: 400030
-    second: Root
+    second: ForeArm_R
   - first:
       4: 400032
-    second: Shin_L
+    second: ForeArm_R 1
   - first:
       4: 400034
-    second: Shin_R
+    second: Hand_L
   - first:
       4: 400036
-    second: Shoulder_L
+    second: Hand_L 1
   - first:
       4: 400038
-    second: Shoulder_R
+    second: Hand_R
   - first:
       4: 400040
-    second: Thigh_L
+    second: Hand_R 1
   - first:
       4: 400042
-    second: Thigh_R
+    second: Head
   - first:
       4: 400044
-    second: Toe_L
+    second: Head 1
   - first:
       4: 400046
+    second: Hip
+  - first:
+      4: 400048
+    second: Hip 1
+  - first:
+      4: 400050
+    second: //RootNode
+  - first:
+      4: 400052
+    second: Neck
+  - first:
+      4: 400054
+    second: Neck 1
+  - first:
+      4: 400056
+    second: Shin_L
+  - first:
+      4: 400058
+    second: Shin_L 1
+  - first:
+      4: 400060
+    second: Shin_R
+  - first:
+      4: 400062
+    second: Shin_R 1
+  - first:
+      4: 400064
+    second: Shoulder_L
+  - first:
+      4: 400066
+    second: Shoulder_L 1
+  - first:
+      4: 400068
+    second: Shoulder_R
+  - first:
+      4: 400070
+    second: Shoulder_R 1
+  - first:
+      4: 400072
+    second: Thigh_L
+  - first:
+      4: 400074
+    second: Thigh_L 1
+  - first:
+      4: 400076
+    second: Thigh_R
+  - first:
+      4: 400078
+    second: Thigh_R 1
+  - first:
+      4: 400080
+    second: Toe_L
+  - first:
+      4: 400082
+    second: Toe_L 1
+  - first:
+      4: 400084
     second: Toe_R
+  - first:
+      4: 400086
+    second: Toe_R 1
+  - first:
+      4: 400088
+    second: Root
+  - first:
+      4: 400090
+    second: Root 1
   - first:
       43: 4300000
     second: BlueGuy
   - first:
       74: 7400000
-    second: knockdown_loop_A
+    second: run
   - first:
       95: 9500000
     second: //RootNode
@@ -179,13 +311,15 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Shin_R' has scale animation that will be
-      discarded.\n\t'Foot_R' has scale animation that will be discarded.\n"
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+      to improve retargeting quality.\n\t'Foot_L' has scale animation that will be
+      discarded.\n\t'Shin_R' has scale animation that will be discarded.\n\t'Foot_R'
+      has scale animation that will be discarded.\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n"
+    animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -194,25 +328,25 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: knockdown_loop_A
+      name: run
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 120
+      lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

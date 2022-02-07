@@ -5,24 +5,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody myBody;
+    private PlayerAnimation _playerAnimation;
+    private PlayerControlsScript _playerControlsScript;
+    private Rigidbody _myBody;
 
     public float walkSpeed;
 
-    private float rotationY = 90f;
-    private float rotationSpeed = 15f;
+    private float _rotationSpeed = 15f;
 
-    private Direction movementDirection;
-    
+    private Direction _movementDirection;
+
     void Start()
     {
-        myBody = GetComponent<Rigidbody>();
-        // palyerAnimation = GetComponent<PlayerAnimation>();
+        _myBody = GetComponent<Rigidbody>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
+        _playerControlsScript = GetComponent<PlayerControlsScript>();
     }
 
     void Update()
     {
         RotatePlayer();
+        AnimatePlayerWalk();
     }
     
     void FixedUpdate()
@@ -32,16 +35,28 @@ public class PlayerMovement : MonoBehaviour
 
     void DetectMovement()
     {
-        myBody.velocity = new Vector3(Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) * (-walkSpeed), myBody.velocity.y,
-            Input.GetAxisRaw(Axis.VERTICAL_AXIS) * (-walkSpeed));
+        _myBody.velocity = new Vector3(_playerControlsScript.controls.HorizontalAxis() * (-walkSpeed), _myBody.velocity.y,
+            _playerControlsScript.controls.VerticalAxis() * (-walkSpeed));
     }
 
     void RotatePlayer()
     {
-        movementDirection = new Direction((int)Input.GetAxisRaw(Axis.HORIZONTAL_AXIS), (int)Input.GetAxisRaw(Axis.VERTICAL_AXIS));
-        if (!movementDirection.Equals(new Direction(0, 0)))
+        _movementDirection = new Direction(_playerControlsScript.controls.HorizontalAxis(), _playerControlsScript.controls.VerticalAxis());
+        if (!_movementDirection.Equals(new Direction(0, 0)))
         {
-            transform.rotation = Quaternion.Euler(0f, Movement.ROTATION_Y[movementDirection], 0f);
+            transform.rotation = Quaternion.Euler(0f, Movement.ROTATION_Y[_movementDirection], 0f);
+        }
+    }
+
+    void AnimatePlayerWalk()
+    {
+        if (_playerControlsScript.controls.HorizontalAxis() != 0 || _playerControlsScript.controls.VerticalAxis() != 0)
+        {
+            _playerAnimation.Walk(true);
+        }
+        else
+        {
+            _playerAnimation.Walk(false);
         }
     }
 }

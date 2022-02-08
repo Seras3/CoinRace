@@ -16,6 +16,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
     private AudioClip wooshSound, bodyHitSound, groundHitSound, deathSound;
 
     private PlayerMovement _playerMovement;
+    private LadderController _ladderController;
     private PlayerAttack _playerAttack;
 
     private int _currentPlayerLayer;
@@ -26,6 +27,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _playerMovement = GetComponent<PlayerMovement>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _ladderController = GetComponent<LadderController>();
         _currentPlayerLayer = transform.gameObject.layer;
     }
     
@@ -143,6 +145,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
     void DisableMovement()
     {
         _playerMovement.enabled = false;
+        _ladderController.enabled = false;
         transform.gameObject.layer = Layers.DEFAULT_LAYER;
         DisableAttack(); 
     }
@@ -150,6 +153,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
     void EnableMovement()
     {
         _playerMovement.enabled = true;
+        _ladderController.enabled = true;
         transform.gameObject.layer = _currentPlayerLayer;
         EnableAttack();
     }

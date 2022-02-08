@@ -27,13 +27,21 @@ public class LadderController : MonoBehaviour
             isClimbing = true;
         }
     }
+
+    bool isDead()
+    {
+        return GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(AnimationTags.DEATH_TRIGGER);
+    }
     
     void OnTriggerExit(Collider collider)
     {
         print("EXIT: " + collider.gameObject.tag);
         if (collider.gameObject.CompareTag(Tags.LADDER_TAG))
         {
-            GetComponent<PlayerMovement>().enabled = true;
+            if (!isDead()) // solve weird bug when die on ladders
+            {
+                GetComponent<PlayerMovement>().enabled = true;
+            }
             isClimbing = false;
         }
     }

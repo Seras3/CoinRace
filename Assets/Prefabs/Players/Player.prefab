@@ -714,6 +714,7 @@ GameObject:
   - component: {fileID: 3663261180408526120}
   - component: {fileID: 8192880840375080321}
   - component: {fileID: 263354972043188961}
+  - component: {fileID: 1576257804097265428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -973,6 +974,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &1576257804097265428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505736016353951173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90a7670d365b8b4ba0fe8c8aec03765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedUpDown: 3.2
+  isClimbing: 0
 --- !u!1 &7505736016416379067
 GameObject:
   m_ObjectHideFlags: 0

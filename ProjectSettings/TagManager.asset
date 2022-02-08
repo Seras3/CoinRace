@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RightHand
   - RightToe
+  - Ladder
   layers:
   - Default
   - TransparentFX

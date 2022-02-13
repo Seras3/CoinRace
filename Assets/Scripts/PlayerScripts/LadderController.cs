@@ -20,7 +20,7 @@ public class LadderController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        print("ENTER: " + collider.gameObject.tag);
+        // print("ENTER: " + collider.gameObject.tag);
         if (collider.gameObject.CompareTag(Tags.LADDER_TAG))
         {
             GetComponent<PlayerMovement>().enabled = false;
@@ -35,7 +35,7 @@ public class LadderController : MonoBehaviour
     
     void OnTriggerExit(Collider collider)
     {
-        print("EXIT: " + collider.gameObject.tag);
+        // print("EXIT: " + collider.gameObject.tag);
         if (collider.gameObject.CompareTag(Tags.LADDER_TAG))
         {
             if (!isDead()) // solve weird bug when die on ladders

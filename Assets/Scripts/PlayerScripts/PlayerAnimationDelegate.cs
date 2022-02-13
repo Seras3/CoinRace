@@ -17,6 +17,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
 
     private PlayerMovement _playerMovement;
     private LadderController _ladderController;
+    private PlayerRotation _playerRotation;
     private PlayerAttack _playerAttack;
 
     private int _currentPlayerLayer;
@@ -28,6 +29,7 @@ public class PlayerAnimationDelegate : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         _playerAttack = GetComponent<PlayerAttack>();
         _ladderController = GetComponent<LadderController>();
+        _playerRotation = GetComponent<PlayerRotation>();
         _currentPlayerLayer = transform.gameObject.layer;
     }
     
@@ -156,6 +158,16 @@ public class PlayerAnimationDelegate : MonoBehaviour
         _ladderController.enabled = true;
         transform.gameObject.layer = _currentPlayerLayer;
         EnableAttack();
+    }
+
+    void DisableRotation()
+    {
+        _playerRotation.enabled = false;
+    }
+
+    void EnableRotation()
+    {
+        _playerRotation.enabled = true;
     }
     
     void DisableAttack()

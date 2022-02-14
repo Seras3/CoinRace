@@ -693,8 +693,8 @@ RectTransform:
   m_Children:
   - {fileID: 1721806247}
   - {fileID: 1656682358}
-  - {fileID: 1923165909}
   - {fileID: 1076169932}
+  - {fileID: 1923165909}
   m_Father: {fileID: 1604825424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 1076169934}
   - component: {fileID: 1076169933}
   m_Layer: 5
-  m_Name: OptionsButton (1)
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1105,11 +1105,11 @@ RectTransform:
   m_Children:
   - {fileID: 936828548}
   m_Father: {fileID: 854825000}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000041008, y: -137}
+  m_AnchoredPosition: {x: 0.000041007996, y: -137}
   m_SizeDelta: {x: 339.0012, y: 70.7642}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076169933
@@ -2517,7 +2517,7 @@ RectTransform:
   m_Children:
   - {fileID: 23395981}
   m_Father: {fileID: 854825000}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

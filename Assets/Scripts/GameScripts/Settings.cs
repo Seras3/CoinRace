@@ -71,5 +71,5 @@ public class Settings : MonoBehaviour
         KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, 
         KeyCode.Keypad1, KeyCode.Keypad2);
 
-    public KeyCode pauseGame = KeyCode.Escape;
+    public static KeyCode pauseGame = KeyCode.Escape;
 }

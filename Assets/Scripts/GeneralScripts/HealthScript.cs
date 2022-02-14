@@ -10,13 +10,11 @@ public class HealthScript : MonoBehaviour
     private PlayerMovement _movementScript;
 
     private bool isDead;
-    private UIManagerScript _uiManagerScript;
     private bool isPlayer1;
 
     void Start()
     {
         _animationScript = GetComponent<PlayerAnimation>();
-        _uiManagerScript = GameObject.Find(ObjectNames.UI_MANAGER).GetComponent<UIManagerScript>();
         isPlayer1 = transform.gameObject.name.Equals(ObjectNames.PLAYER_1);
     }
 
@@ -28,7 +26,7 @@ public class HealthScript : MonoBehaviour
         }
 
         health -= damage;
-        _uiManagerScript.DisplayHealthUI(isPlayer1, health);
+        UIManagerScript.Instance.DisplayHealthUI(isPlayer1, health);
 
 
         if (health <= 0f)

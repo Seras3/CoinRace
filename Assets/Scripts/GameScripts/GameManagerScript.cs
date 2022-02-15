@@ -33,7 +33,7 @@ public class GameManagerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(SettingsManagerScript.Instance.PauseGame))
+        if (State != GameState.MENU && Input.GetKeyDown(SettingsManagerScript.Instance.PauseGame))
         {
             UpdateState(State == GameState.PAUSE ? GameState.PLAY : GameState.PAUSE);
         }
@@ -51,6 +51,8 @@ public class GameManagerScript : MonoBehaviour
             case GameState.PLAY:
                 HandlePlay();
                 break;
+            case GameState.MENU:
+                break;
             case GameState.END_ROUND:
                 break;
             case GameState.END_GAME:
@@ -64,7 +66,16 @@ public class GameManagerScript : MonoBehaviour
     {
         UpdateState(GameState.PLAY);
     }
-    
+
+    public void PauseGame()
+    {
+        UpdateState(GameState.PAUSE);
+    }
+    public void BrowseMenu()
+    {
+        UpdateState(GameState.MENU);
+    }
+
     private void HandlePause()
     {
         Time.timeScale = 0;
@@ -86,6 +97,7 @@ public enum GameState
 {
     PAUSE,
     PLAY,
+    MENU,
     END_ROUND,
     END_GAME
 }

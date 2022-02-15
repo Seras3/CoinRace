@@ -7,6 +7,7 @@ public class PlayerControlsScript : MonoBehaviour
     public bool isPlayer1;
     [SerializeField]
     public PlayerControls controls;
+    
     void Start()
     {
         if (isPlayer1)

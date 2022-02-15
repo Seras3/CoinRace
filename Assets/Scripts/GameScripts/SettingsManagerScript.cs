@@ -25,7 +25,7 @@ public class PlayerControls
         this.punch = punch;
         this.kick = kick;
     }
-    
+
     public int HorizontalAxis()
     {
         if (Input.GetKey(moveRight))
@@ -97,10 +97,7 @@ public class SettingsManagerScript : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-    }
-    
-    private void Start()
-    {
+        
         Player1Controls = new PlayerControls(
             KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, 
             KeyCode.F, KeyCode.G);
@@ -114,4 +111,5 @@ public class SettingsManagerScript : MonoBehaviour
         MusicVolume = 1;
         VFXVolume = 1;
     }
+    
 }

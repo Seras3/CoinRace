@@ -33,7 +33,7 @@ public class GameManagerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(Settings.pauseGame))
+        if (Input.GetKeyDown(SettingsManagerScript.Instance.PauseGame))
         {
             UpdateState(State == GameState.PAUSE ? GameState.PLAY : GameState.PAUSE);
         }

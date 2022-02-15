@@ -118,28 +118,28 @@ public class PlayerAnimationDelegate : MonoBehaviour
 
     void AttackSoundPlay()
     {
-        _audioSource.volume = 0.2f;
+        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         _audioSource.clip = wooshSound;
         _audioSource.Play();
     }
     
     void DeathSoundPlay()
     {
-        _audioSource.volume = 1f;
+        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         _audioSource.clip = deathSound;
         _audioSource.Play();
     }
     
     void KnockDownSoundPlay()
     {
-        _audioSource.volume = 1f;
+        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         _audioSource.clip = groundHitSound;
         _audioSource.Play();
     }
 
     void HitBodySoundPlay()
     {
-        _audioSource.volume = 1f;
+        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         _audioSource.clip = bodyHitSound;
         _audioSource.Play();
     }

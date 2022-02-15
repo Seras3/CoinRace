@@ -11,11 +11,11 @@ public class PlayerControlsScript : MonoBehaviour
     {
         if (isPlayer1)
         {
-            controls = Settings.player1Controls;
+            controls = SettingsManagerScript.Instance.Player1Controls;
         }
         else
         {
-            controls = Settings.player2Controls;
+            controls = SettingsManagerScript.Instance.Player2Controls;
         }
     }
 }

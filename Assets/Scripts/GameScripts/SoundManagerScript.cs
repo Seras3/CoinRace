@@ -16,7 +16,7 @@ public class SoundManagerScript : MonoBehaviour
 
     public void BodyHitImpactPlay()
     {
-        _audioSource.volume = 0.2f;
+        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         _audioSource.clip = bodyHitImpactSound;
         _audioSource.Play();
     }

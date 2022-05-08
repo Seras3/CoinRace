@@ -10,13 +10,8 @@ public class AttackGeneral : MonoBehaviour
     public float damage = 10f;
 
     public GameObject hitFX;
-    private SoundManagerScript _soundManagerScript;
-
-    void Start()
-    {
-        _soundManagerScript = GameObject.Find(ObjectNames.SOUND_MANAGER).GetComponent<SoundManagerScript>();
-    }
     
+
     void Update()
     {
         DetectCollision();
@@ -32,7 +27,7 @@ public class AttackGeneral : MonoBehaviour
 
             if (hit[0].gameObject.name.Equals(ObjectNames.PLAYER_1) || hit[0].gameObject.name.Equals(ObjectNames.PLAYER_2))
             {
-                _soundManagerScript.BodyHitImpactPlay();
+                SoundManagerScript.Instance.BodyHitImpactPlay();
             }
 
             if (gameObject.CompareTag(Tags.RIGHT_HAND_TAG) || gameObject.CompareTag(Tags.RIGHT_TOE_TAG))

@@ -118,30 +118,22 @@ public class PlayerAnimationDelegate : MonoBehaviour
 
     void AttackSoundPlay()
     {
-        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
-        _audioSource.clip = wooshSound;
-        _audioSource.Play();
+        SoundManagerScript.Instance.AttackSoundPlay(_audioSource);
     }
     
     void DeathSoundPlay()
     {
-        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
-        _audioSource.clip = deathSound;
-        _audioSource.Play();
+        SoundManagerScript.Instance.DeathSoundPlay(_audioSource);
     }
     
     void KnockDownSoundPlay()
     {
-        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
-        _audioSource.clip = groundHitSound;
-        _audioSource.Play();
+        SoundManagerScript.Instance.KnockDownSoundPlay(_audioSource);
     }
 
     void HitBodySoundPlay()
     {
-        _audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
-        _audioSource.clip = bodyHitSound;
-        _audioSource.Play();
+        SoundManagerScript.Instance.HitBodySoundPlay(_audioSource);
     }
 
     void DisableMovement()

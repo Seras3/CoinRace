@@ -10,6 +10,8 @@ public class HealthScript : MonoBehaviour
     private PlayerMovement _movementScript;
 
     private bool isDead;
+    public bool IsDead => isDead;
+
     private bool isPlayer1;
 
     void Start()
@@ -34,7 +36,7 @@ public class HealthScript : MonoBehaviour
             isDead = true;
             _animationScript.Death();
 
-            // TODO: deactivate scripts
+            GameManagerScript.Instance.EndGame(3);
             return;
         }
         
@@ -50,4 +52,5 @@ public class HealthScript : MonoBehaviour
             _animationScript.Hit();
         }
     }
+    
 }

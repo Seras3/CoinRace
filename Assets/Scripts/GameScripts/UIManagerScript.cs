@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class UIManagerScript : MonoBehaviour
     
     private Image _player1HealthImage, _player2HealthImage;
 
-    [SerializeField] private GameObject _pauseScreen;
+    [SerializeField] private GameObject _pauseScreen, _finishScreen;
 
     void Awake()
     {
@@ -63,6 +64,14 @@ public class UIManagerScript : MonoBehaviour
         }
     }
 
+    public void DisplayFinishScreen(bool isPlayer1Winner)
+    {
+        var message = (isPlayer1Winner ? "BLUE" : "RED") + " has won!";
+        _finishScreen.SetActive(true);
+        GameObject.Find(ObjectNames.WINNER_MESSAGE_TEXT).GetComponent<TextMeshProUGUI>().text = message;
+        
+    }
+    
     public void DisplayPauseScreen()
     {
         _pauseScreen.SetActive(true);
@@ -71,5 +80,10 @@ public class UIManagerScript : MonoBehaviour
     public void HidePauseScreen()
     {
         _pauseScreen.SetActive(false);
+    }
+
+    public void HideFinishScreen()
+    {
+        _finishScreen.SetActive(false);
     }
 }

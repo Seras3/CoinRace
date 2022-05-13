@@ -39,6 +39,7 @@ public class ObjectNames
     public const string PLAYER_1_HEALTH_UI = "Player1Image/HealthForeground";
     public const string PLAYER_2_HEALTH_UI = "Player2Image/HealthForeground";
     public const string SOUND_MANAGER = "SoundManager";
+    public const string WINNER_MESSAGE_TEXT = "FinishScreen/WinnerText";
 }
 
 public class Axis

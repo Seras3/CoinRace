@@ -10,13 +10,6 @@ public class PlayerControlsScript : MonoBehaviour
     
     void Start()
     {
-        if (isPlayer1)
-        {
-            controls = SettingsManagerScript.Instance.Player1Controls;
-        }
-        else
-        {
-            controls = SettingsManagerScript.Instance.Player2Controls;
-        }
+        controls = isPlayer1 ? SettingsManagerScript.Instance.Player1Controls : SettingsManagerScript.Instance.Player2Controls;
     }
 }

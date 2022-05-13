@@ -25,7 +25,11 @@ public class UIManagerScript : MonoBehaviour
     
     private Image _player1HealthImage, _player2HealthImage;
 
+    [SerializeField] private bool isGameScene;
+
     [SerializeField] private GameObject _pauseScreen, _finishScreen;
+
+    [SerializeField] private Slider _vfxSlider, _musicSlider;
 
     void Awake()
     {
@@ -34,8 +38,14 @@ public class UIManagerScript : MonoBehaviour
 
     void Start()
     {
-        _player1HealthImage = GameObject.Find(ObjectNames.PLAYER_1_HEALTH_UI).GetComponent<Image>();
-        _player2HealthImage = GameObject.Find(ObjectNames.PLAYER_2_HEALTH_UI).GetComponent<Image>();
+        if (isGameScene)
+        {
+            _player1HealthImage = GameObject.Find(ObjectNames.PLAYER_1_HEALTH_UI).GetComponent<Image>();
+            _player2HealthImage = GameObject.Find(ObjectNames.PLAYER_2_HEALTH_UI).GetComponent<Image>();
+        }
+
+        _vfxSlider.value = SettingsManagerScript.Instance.VFXVolume;
+        _musicSlider.value = SettingsManagerScript.Instance.MusicVolume;
     }
 
     public void DisplayHealthUI(bool isPlayer1, float value)

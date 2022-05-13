@@ -68,6 +68,72 @@ public class Layers
     public const int PLAYER2_LAYER = 7;
 }
 
+public class PlayerPrefsKeys
+{
+    public const string P1_UP = "P1_UP";
+    public const string P1_DOWN = "P1_DOWN";
+    public const string P1_LEFT = "P1_LEFT";
+    public const string P1_RIGHT = "P1_RIGHT";
+    
+    public const string P1_PUNCH = "P1_PUNCH";
+    public const string P1_KICK = "P1_KICK";
+    
+    public const string P2_UP = "P2_UP";
+    public const string P2_DOWN = "P2_DOWN";
+    public const string P2_LEFT = "P2_LEFT";
+    public const string P2_RIGHT = "P2_RIGHT";
+    
+    public const string P2_PUNCH = "P2_PUNCH";
+    public const string P2_KICK = "P2_KICK";
+
+    public const string VFX_VOLUME = "VFX_VOLUME";
+    public const string MUSIC_VOLUME = "MUSIC_VOLUME";
+
+    public const string PAUSE = "PAUSE";
+}
+
+public class Storage
+{
+    public static Dictionary<string, string> Keys = new Dictionary<string, string>()
+    {
+        {PlayerPrefsKeys.P1_UP, KeyCode.W.ToString()},
+        {PlayerPrefsKeys.P1_DOWN, KeyCode.S.ToString()},
+        {PlayerPrefsKeys.P1_LEFT, KeyCode.A.ToString()},
+        {PlayerPrefsKeys.P1_RIGHT, KeyCode.D.ToString()},
+        
+        {PlayerPrefsKeys.P1_PUNCH, KeyCode.F.ToString()},
+        {PlayerPrefsKeys.P1_KICK, KeyCode.G.ToString()},
+        
+        {PlayerPrefsKeys.P2_UP, KeyCode.UpArrow.ToString()},
+        {PlayerPrefsKeys.P2_DOWN, KeyCode.DownArrow.ToString()},
+        {PlayerPrefsKeys.P2_LEFT, KeyCode.LeftArrow.ToString()},
+        {PlayerPrefsKeys.P2_RIGHT, KeyCode.RightArrow.ToString()},
+        
+        {PlayerPrefsKeys.P2_PUNCH, KeyCode.Keypad1.ToString()},
+        {PlayerPrefsKeys.P2_KICK, KeyCode.Keypad2.ToString()},
+        
+        {PlayerPrefsKeys.PAUSE, KeyCode.P.ToString()}
+    };
+    
+    public static Dictionary<string, float> Volumes = new Dictionary<string, float>()
+    {
+        {PlayerPrefsKeys.VFX_VOLUME, 1},
+        {PlayerPrefsKeys.MUSIC_VOLUME, 1},
+    };
+
+    public static void SetKey(string key, string value)
+    {
+        PlayerPrefs.SetString(key, value);
+        Keys[key] = value;
+    }
+
+    public static void SetVolume(string key, float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
+        Volumes[key] = value;
+    }
+}
+
 public class Direction
 {
     public int horizontal { get; set; } // { -1, 0, 1 }

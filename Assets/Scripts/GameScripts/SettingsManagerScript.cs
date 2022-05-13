@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -26,6 +27,62 @@ public class PlayerControls
         this.kick = kick;
     }
 
+    public void UpdateKey(string key, KeyCode value)
+    {
+        switch (key)
+        {
+            case PlayerPrefsKeys.P1_UP:
+                moveUp = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_UP, value.ToString());
+                break;
+            case PlayerPrefsKeys.P1_DOWN:
+                moveDown = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_DOWN, value.ToString());
+                break;
+            case PlayerPrefsKeys.P1_LEFT:
+                moveLeft = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_LEFT, value.ToString());
+                break;
+            case PlayerPrefsKeys.P1_RIGHT:
+                moveRight = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_RIGHT, value.ToString());
+                break;
+            case PlayerPrefsKeys.P1_PUNCH:
+                punch = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_PUNCH, value.ToString());
+                break;
+            case PlayerPrefsKeys.P1_KICK:
+                kick = value;
+                Storage.SetKey(PlayerPrefsKeys.P1_KICK, value.ToString());
+                break;
+            
+            case PlayerPrefsKeys.P2_UP:
+                moveUp = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_UP, value.ToString());
+                break;
+            case PlayerPrefsKeys.P2_DOWN:
+                moveDown = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_DOWN, value.ToString());
+                break;
+            case PlayerPrefsKeys.P2_LEFT:
+                moveLeft = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_LEFT, value.ToString());
+                break;
+            case PlayerPrefsKeys.P2_RIGHT:
+                moveRight = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_RIGHT, value.ToString());
+                break;
+            case PlayerPrefsKeys.P2_PUNCH:
+                punch = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_PUNCH, value.ToString());
+                break;
+            case PlayerPrefsKeys.P2_KICK:
+                kick = value;
+                Storage.SetKey(PlayerPrefsKeys.P2_KICK, value.ToString());
+                break;
+        }
+    }
+    
     public int HorizontalAxis()
     {
         if (Input.GetKey(moveRight))
@@ -87,29 +144,89 @@ public class SettingsManagerScript : MonoBehaviour
     public void MusicVolumeControl(Single volume)
     {
         MusicVolume = volume;
+        Storage.SetVolume(PlayerPrefsKeys.MUSIC_VOLUME, volume);
     }
     
     public void VFXVolumeControl(Single volume)
     {
         VFXVolume = volume;
+        Storage.SetVolume(PlayerPrefsKeys.VFX_VOLUME, volume);
+    }
+
+    public void UpdateKey(string key, KeyCode value)
+    {
+        switch (key)
+        {
+            case PlayerPrefsKeys.PAUSE:
+                PauseGame = value;
+                Storage.SetKey(PlayerPrefsKeys.PAUSE, value.ToString());
+                break;
+        }
+        
     }
     
     private void Awake()
     {
         _instance = this;
         
+        var storageKeysToIterate = Storage.Keys.ToDictionary(
+            entry => entry.Key, 
+            entry => entry.Value);
+        
+        foreach(KeyValuePair<string, string> entry in storageKeysToIterate)
+        {
+            if (!PlayerPrefs.HasKey(entry.Key))
+            {
+                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
+                PlayerPrefs.SetString(entry.Key, entry.Value);
+            }
+            else
+            {
+                // print("ARE: " + entry.Key + " : " + entry.Value);
+                Storage.Keys[entry.Key] = PlayerPrefs.GetString(entry.Key);
+            }
+        }
+        
+        
+        var storageVolumes = Storage.Volumes.ToDictionary(
+            entry => entry.Key, 
+            entry => entry.Value);
+        
+        foreach(KeyValuePair<string, float> entry in storageVolumes)
+        {
+            if (!PlayerPrefs.HasKey(entry.Key))
+            {
+                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
+                PlayerPrefs.SetFloat(entry.Key, entry.Value);
+            }
+            else
+            {
+                // print("ARE: " + entry.Key + " : " + entry.Value);
+                Storage.Volumes[entry.Key] = PlayerPrefs.GetFloat(entry.Key);
+            }
+        }
+        
+        
         Player1Controls = new PlayerControls(
-            KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, 
-            KeyCode.F, KeyCode.G);
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_UP]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_DOWN]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_LEFT]),
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_RIGHT]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_PUNCH]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_KICK]));
         
         Player2Controls = new PlayerControls(
-            KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, 
-            KeyCode.Keypad1, KeyCode.Keypad2);
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_UP]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_DOWN]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_LEFT]),
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_RIGHT]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_PUNCH]), 
+            Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P2_KICK]));
 
-        PauseGame = KeyCode.Escape;
+        PauseGame = Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.PAUSE]);
 
-        MusicVolume = 1;
-        VFXVolume = 1;
+        MusicVolume = Storage.Volumes[PlayerPrefsKeys.MUSIC_VOLUME];
+        VFXVolume = Storage.Volumes[PlayerPrefsKeys.VFX_VOLUME];
     }
-    
+
 }

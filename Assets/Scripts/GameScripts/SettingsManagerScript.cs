@@ -141,6 +141,7 @@ public class SettingsManagerScript : MonoBehaviour
     public float MusicVolume { get; set; }
     public float VFXVolume { get; set; }
 
+    public int MaxCoins { get; private set; }
     public void MusicVolumeControl(Single volume)
     {
         MusicVolume = volume;
@@ -168,6 +169,8 @@ public class SettingsManagerScript : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+
+        MaxCoins = 5;
         
         var storageKeysToIterate = Storage.Keys.ToDictionary(
             entry => entry.Key, 

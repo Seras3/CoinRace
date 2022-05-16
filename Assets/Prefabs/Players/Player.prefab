@@ -716,6 +716,8 @@ GameObject:
   - component: {fileID: 263354972043188961}
   - component: {fileID: 1576257804097265428}
   - component: {fileID: -4134595628978558111}
+  - component: {fileID: -5155879814441493041}
+  - component: {fileID: -876287379424876091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1001,6 +1003,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0e94a592f35264e8cafd78364fc8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5155879814441493041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505736016353951173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7924eab8e385743946646aed16cea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCoinCollect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-876287379424876091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505736016353951173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba6ff35d84a5154ea13029dd9728e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _respawnPoint: {fileID: 0}
+  _deathPoint: {fileID: 0}
 --- !u!1 &7505736016416379067
 GameObject:
   m_ObjectHideFlags: 0

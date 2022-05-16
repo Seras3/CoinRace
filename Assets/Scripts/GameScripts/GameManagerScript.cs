@@ -24,7 +24,8 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject _player1, _player2;
-    
+
+    private bool IsPlayer1Winner { get; set; }
     private void Awake()
     {
         _instance = this;
@@ -91,11 +92,12 @@ public class GameManagerScript : MonoBehaviour
         UpdateState(GameState.MENU);
     }
     
-    public void EndGame(float delay=0)
+    public void EndGame(bool isPlayer1Winner, float delay=0)
     {
+        IsPlayer1Winner = isPlayer1Winner;
         StartCoroutine(EndGameWithDelay(delay));
     }
-    
+
     private IEnumerator EndGameWithDelay(float time)
     {
         yield return new WaitForSeconds(time);
@@ -136,9 +138,8 @@ public class GameManagerScript : MonoBehaviour
 
     private void HandleEndGame()
     {
-        bool isPlayer1Dead = _player1.GetComponent<HealthScript>().IsDead;
         FreezeGame();
-        UIManagerScript.Instance.DisplayFinishScreen(!isPlayer1Dead);
+        UIManagerScript.Instance.DisplayFinishScreen(IsPlayer1Winner);
     }
 }
 

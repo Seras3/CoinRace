@@ -34,9 +34,7 @@ public class UIManagerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _roundText;
 
     [SerializeField] private GameObject _player1Trophy, _player2Trophy;
-
     public float EndRoundDelay { get; private set; }
-
     void Awake()
     {
         _instance = this;

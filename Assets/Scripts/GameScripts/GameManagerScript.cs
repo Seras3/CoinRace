@@ -126,17 +126,21 @@ public class GameManagerScript : MonoBehaviour
 
         IsPlayer1Winner = Player1Wins == SettingsManagerScript.Instance.MaxWins;
         HasFinishedGame = IsPlayer1Winner || Player2Wins == SettingsManagerScript.Instance.MaxWins;
+
+        if (HasFinishedGame)
+        {
+            if (IsPlayer1Winner)
+            {
+                _player1.GetComponent<PlayerAnimation>().Win();
+                _player2.GetComponent<PlayerAnimationDelegate>().DisableMovement();
+            }
+            else
+            {
+                _player1.GetComponent<PlayerAnimationDelegate>().DisableMovement();
+                _player2.GetComponent<PlayerAnimation>().Win();
+            }
+        }
         
-        if (IsPlayer1Winner)
-        {
-            _player1.GetComponent<PlayerAnimation>().Win();
-            _player2.GetComponent<PlayerAnimationDelegate>().DisableMovement();
-        }
-        else
-        {
-            _player1.GetComponent<PlayerAnimationDelegate>().DisableMovement();
-            _player2.GetComponent<PlayerAnimation>().Win();
-        }
         
         StartCoroutine(EndRoundWithDelay(delay));
     }

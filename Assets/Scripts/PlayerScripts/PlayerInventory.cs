@@ -21,16 +21,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Coins == SettingsManagerScript.Instance.MaxCoins)
         {
-            if (_isPlayer1 && GameManagerScript.Player1Wins == SettingsManagerScript.Instance.MaxWins - 1 || 
-                !_isPlayer1 && GameManagerScript.Player2Wins == SettingsManagerScript.Instance.MaxWins - 1)
-            {
-                GameManagerScript.Instance.EndRound(_isPlayer1, UIManagerScript.Instance.EndRoundDelay);
-            }
-            else
-            {
-                GameManagerScript.Instance.EndRound(_isPlayer1);
-            }
-            
+            GameManagerScript.Instance.EndRound(_isPlayer1, UIManagerScript.Instance.EndRoundDelay);
         }
     }
 }

@@ -12,8 +12,13 @@ public class CoinCollector : MonoBehaviour
         if (playerInventory != null)
         {
             playerInventory.CollectCoin();
+            SoundManagerScript.Instance.CoinCollectSoundPlay();
             gameObject.SetActive(false);
-            gameObject.GetComponent<CoinRespawner>().Respawn();
+            
+            if (playerInventory.Coins != SettingsManagerScript.Instance.MaxCoins)
+            {
+                gameObject.GetComponent<CoinRespawner>().Respawn();
+            }
         }
     }
 }

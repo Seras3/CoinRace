@@ -85,7 +85,7 @@ public class SoundManagerScript : MonoBehaviour
         audioSource.Play();
     }
     
-    public void CoinCollectSoundPlay(AudioSource otherAudioSource)
+    public void CoinCollectSoundPlay(AudioSource otherAudioSource = null)
     {
         var audioSource = otherAudioSource ? otherAudioSource : _audioSourceSecondary;
         audioSource.volume = SettingsManagerScript.Instance.VFXVolume;

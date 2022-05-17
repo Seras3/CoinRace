@@ -34,7 +34,9 @@ public class UIManagerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _roundText;
 
     [SerializeField] private GameObject _player1Trophy, _player2Trophy;
-    
+
+    public float EndRoundDelay { get; private set; }
+
     void Awake()
     {
         _instance = this;
@@ -44,6 +46,7 @@ public class UIManagerScript : MonoBehaviour
     {
         if (isGameScene)
         {
+            EndRoundDelay = 3;
             _player1HealthImage = GameObject.Find(ObjectNames.PLAYER_1_HEALTH_UI).GetComponent<Image>();
             _player2HealthImage = GameObject.Find(ObjectNames.PLAYER_2_HEALTH_UI).GetComponent<Image>();
         }

@@ -25,10 +25,11 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     private GameObject _player1, _player2;
     
-    private static int Player1Wins { get; set; }
-    private static int Player2Wins { get; set; }
+    public static int Player1Wins { get; private set; }
+    public static int Player2Wins { get; private set; }
     private bool IsPlayer1Winner { get; set; }
 
+    private bool HasFinishedGame { get; set; }
     public static void Init()
     {
         Player1Wins = 0;
@@ -122,6 +123,21 @@ public class GameManagerScript : MonoBehaviour
         {
             Player2Wins++;
         }
+
+        IsPlayer1Winner = Player1Wins == SettingsManagerScript.Instance.MaxWins;
+        HasFinishedGame = IsPlayer1Winner || Player2Wins == SettingsManagerScript.Instance.MaxWins;
+        
+        if (IsPlayer1Winner)
+        {
+            _player1.GetComponent<PlayerAnimation>().Win();
+            _player2.GetComponent<PlayerAnimationDelegate>().DisableMovement();
+        }
+        else
+        {
+            _player1.GetComponent<PlayerAnimationDelegate>().DisableMovement();
+            _player2.GetComponent<PlayerAnimation>().Win();
+        }
+        
         StartCoroutine(EndRoundWithDelay(delay));
     }
     
@@ -171,9 +187,10 @@ public class GameManagerScript : MonoBehaviour
 
     private void HandleEndRound()
     {
-        if (Player1Wins == SettingsManagerScript.Instance.MaxWins || Player2Wins == SettingsManagerScript.Instance.MaxWins)
+        if (HasFinishedGame)
         {
-            IsPlayer1Winner = Player1Wins == SettingsManagerScript.Instance.MaxWins;
+            SoundManagerScript.Instance.LoudCrowdSoundPlay();
+
             EndGame();
         }
         else

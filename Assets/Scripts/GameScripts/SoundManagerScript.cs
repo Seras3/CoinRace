@@ -19,10 +19,11 @@ public class SoundManagerScript : MonoBehaviour
         }
     }
 
-    private AudioSource _audioSourceMain, _audioSourceSecondary;
-    
+    private AudioSource _audioSourceMain, _audioSourceSecondary, _audioSourceMusic;
+
     [SerializeField]
-    private AudioClip bodyHitImpactSound, wooshSound, deathSound, groundHitSound, bodyHitSound;
+    private AudioClip bodyHitImpactSound, wooshSound, deathSound, groundHitSound, bodyHitSound, yesSound, 
+        gameMusic, loudCrowdSound, coinCollectSound;
     
     void Awake()
     {
@@ -73,6 +74,38 @@ public class SoundManagerScript : MonoBehaviour
         var audioSource = otherAudioSource ? otherAudioSource : _audioSourceSecondary;
         audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
         audioSource.clip = bodyHitSound;
+        audioSource.Play();
+    }
+
+    public void YesSoundPlay(AudioSource otherAudioSource)
+    {
+        var audioSource = otherAudioSource ? otherAudioSource : _audioSourceSecondary;
+        audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
+        audioSource.clip = yesSound;
+        audioSource.Play();
+    }
+    
+    public void CoinCollectSoundPlay(AudioSource otherAudioSource)
+    {
+        var audioSource = otherAudioSource ? otherAudioSource : _audioSourceSecondary;
+        audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
+        audioSource.clip = coinCollectSound;
+        audioSource.Play();
+    }
+    
+    public void GameMusicPlay(AudioSource otherAudioSource)
+    {
+        var audioSource = otherAudioSource ? otherAudioSource : _audioSourceMusic;
+        audioSource.volume = SettingsManagerScript.Instance.MusicVolume;
+        audioSource.clip = gameMusic;
+        audioSource.Play();
+    }
+
+    public void LoudCrowdSoundPlay(AudioSource otherAudioSource = null)
+    {
+        var audioSource = otherAudioSource ? otherAudioSource : _audioSourceMain;
+        audioSource.volume = SettingsManagerScript.Instance.VFXVolume;
+        audioSource.clip = loudCrowdSound;
         audioSource.Play();
     }
 }

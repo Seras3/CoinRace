@@ -56875,6 +56875,10 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 675c627e1190dc04ba23b0459bf784e3, type: 3}
   groundHitSound: {fileID: 8300000, guid: a961ae6e0f8151d43a6fc8c2e2ea4424, type: 3}
   bodyHitSound: {fileID: 8300000, guid: 7fc7fae6ef433ce42b86e4d5967e5857, type: 3}
+  yesSound: {fileID: 8300000, guid: a1dc9141191f26d4bb07ba55069c2461, type: 3}
+  gameMusic: {fileID: 0}
+  loudCrowdSound: {fileID: 8300000, guid: 7157a760c01808b42a3557c1d53a18f6, type: 3}
+  coinCollectSound: {fileID: 8300000, guid: f51d53b0971cb3c498a05fb503b146dd, type: 3}
 --- !u!82 &1556132065
 AudioSource:
   m_ObjectHideFlags: 0

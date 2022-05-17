@@ -12,9 +12,6 @@ public class PlayerAnimationDelegate : MonoBehaviour
 
     private AudioSource _audioSource;
 
-    [SerializeField] 
-    private AudioClip wooshSound, bodyHitSound, groundHitSound, deathSound;
-
     private PlayerMovement _playerMovement;
     private LadderController _ladderController;
     private PlayerRotation _playerRotation;
@@ -136,7 +133,12 @@ public class PlayerAnimationDelegate : MonoBehaviour
         SoundManagerScript.Instance.HitBodySoundPlay(_audioSource);
     }
 
-    void DisableMovement()
+    void YesSoundPlay()
+    {
+        SoundManagerScript.Instance.YesSoundPlay(_audioSource);
+    }
+
+    public void DisableMovement()
     {
         _playerMovement.enabled = false;
         _ladderController.enabled = false;

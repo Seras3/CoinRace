@@ -11,10 +11,11 @@ public class CoinUI : MonoBehaviour
     void Start()
     {
         _coinsText = gameObject.GetComponent<TextMeshProUGUI>();
+        _coinsText.text = "0/" + SettingsManagerScript.Instance.MaxCoins;
     }
 
-    public void UpdateUI(PlayerInventory playerInventory, int maxCoins)
+    public void UpdateUI(PlayerInventory playerInventory)
     {
-        _coinsText.text = playerInventory.Coins + "/" + maxCoins;
+        _coinsText.text = playerInventory.Coins + "/" + SettingsManagerScript.Instance.MaxCoins;
     }
 }

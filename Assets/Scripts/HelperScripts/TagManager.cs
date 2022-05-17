@@ -19,6 +19,8 @@ public class AnimationTags
     public const string GET_UP_TRIGGER = "GetUp";
     public const string HIT_TRIGGER = "Hit";
     public const string DEATH_TRIGGER = "Death";
+
+    public const string WIN_TRIGGER = "Win";
 }
 
 public class AnimationNames

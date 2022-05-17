@@ -60,4 +60,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetTrigger(AnimationTags.DEATH_TRIGGER);
     }
+
+    public void Win()
+    {
+        animator.SetTrigger(AnimationTags.WIN_TRIGGER);
+    }
 }

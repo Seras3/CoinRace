@@ -40,6 +40,7 @@ public class ObjectNames
     public const string PLAYER_2_HEALTH_UI = "Player2Image/HealthForeground";
     public const string SOUND_MANAGER = "SoundManager";
     public const string WINNER_MESSAGE_TEXT = "FinishScreen/WinnerText";
+    public const string BLOCK_AREA = "BlockArea";
 }
 
 public class Axis

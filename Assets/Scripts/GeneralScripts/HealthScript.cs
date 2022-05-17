@@ -36,7 +36,7 @@ public class HealthScript : MonoBehaviour
             isDead = true;
             _animationScript.Death();
 
-            GameManagerScript.Instance.EndGame(!isPlayer1, 3);
+            GameManagerScript.Instance.EndRound(!isPlayer1, 3);
             return;
         }
         

@@ -11,6 +11,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private float _respawnTime = 5;
     
+    private bool HasRoundEnded { get; set; }
+    
     void Start()
     {
         Respawn();
@@ -18,9 +20,10 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < _deathPoint.transform.position.y)
+        if (!HasRoundEnded && transform.position.y < _deathPoint.transform.position.y)
         {
-            GameManagerScript.Instance.EndGame(gameObject.name != ObjectNames.PLAYER_1);
+            GameManagerScript.Instance.EndRound(gameObject.name != ObjectNames.PLAYER_1);
+            HasRoundEnded = true;
         }
     }
 

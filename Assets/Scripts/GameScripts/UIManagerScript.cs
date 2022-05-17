@@ -31,6 +31,10 @@ public class UIManagerScript : MonoBehaviour
 
     [SerializeField] private Slider _vfxSlider, _musicSlider;
 
+    [SerializeField] private TextMeshProUGUI _roundText;
+
+    [SerializeField] private GameObject _player1Trophy, _player2Trophy;
+    
     void Awake()
     {
         _instance = this;
@@ -81,6 +85,29 @@ public class UIManagerScript : MonoBehaviour
         GameObject.Find(ObjectNames.WINNER_MESSAGE_TEXT).GetComponent<TextMeshProUGUI>().text = message;
         
     }
+
+    public void DisplayRound(int round)
+    {
+        if (round != 2 * SettingsManagerScript.Instance.MaxWins - 1)
+        {
+            _roundText.text = "Round " + round;
+        }
+        else
+        {
+            _roundText.text = "Final Round";
+        }
+    }
+
+    public void DisplayPlayer1Trophy()
+    {
+        _player1Trophy.SetActive(true);
+    }
+    
+    public void DisplayPlayer2Trophy()
+    {
+        _player2Trophy.SetActive(true);
+    }
+    
     
     public void DisplayPauseScreen()
     {

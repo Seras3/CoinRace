@@ -24,8 +24,17 @@ public class GameManagerScript : MonoBehaviour
 
     [SerializeField]
     private GameObject _player1, _player2;
-
+    
+    private static int Player1Wins { get; set; }
+    private static int Player2Wins { get; set; }
     private bool IsPlayer1Winner { get; set; }
+
+    public static void Init()
+    {
+        Player1Wins = 0;
+        Player2Wins = 0;
+    }
+    
     private void Awake()
     {
         _instance = this;
@@ -33,6 +42,16 @@ public class GameManagerScript : MonoBehaviour
     
     private void Start()
     {
+        UIManagerScript.Instance.DisplayRound(Player1Wins + Player2Wins + 1);
+        if (Player1Wins > 0)
+        {
+            UIManagerScript.Instance.DisplayPlayer1Trophy();
+        }
+
+        if (Player2Wins > 0)
+        {
+            UIManagerScript.Instance.DisplayPlayer2Trophy();
+        }
         PlayGame();
     }
 
@@ -63,6 +82,7 @@ public class GameManagerScript : MonoBehaviour
             case GameState.MENU:
                 break;
             case GameState.END_ROUND:
+                HandleEndRound();
                 break;
             case GameState.END_GAME:
                 HandleEndGame();
@@ -91,18 +111,30 @@ public class GameManagerScript : MonoBehaviour
     {
         UpdateState(GameState.MENU);
     }
-    
-    public void EndGame(bool isPlayer1Winner, float delay=0)
+
+    public void EndRound(bool isPlayer1Winner, float delay = 0)
     {
-        IsPlayer1Winner = isPlayer1Winner;
-        StartCoroutine(EndGameWithDelay(delay));
+        if (isPlayer1Winner)
+        {
+            Player1Wins++;
+        }
+        else
+        {
+            Player2Wins++;
+        }
+        StartCoroutine(EndRoundWithDelay(delay));
+    }
+    
+    public void EndGame()
+    {
+        UpdateState(GameState.END_GAME);
     }
 
-    private IEnumerator EndGameWithDelay(float time)
+    private IEnumerator EndRoundWithDelay(float time)
     {
         yield return new WaitForSeconds(time);
  
-        UpdateState(GameState.END_GAME);
+        UpdateState(GameState.END_ROUND);
     }
 
     private void FreezeGame()
@@ -127,6 +159,7 @@ public class GameManagerScript : MonoBehaviour
 
     private void HandleRestart()
     {
+        Init();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
@@ -136,11 +169,25 @@ public class GameManagerScript : MonoBehaviour
         UIManagerScript.Instance.HidePauseScreen();
     }
 
+    private void HandleEndRound()
+    {
+        if (Player1Wins == SettingsManagerScript.Instance.MaxWins || Player2Wins == SettingsManagerScript.Instance.MaxWins)
+        {
+            IsPlayer1Winner = Player1Wins == SettingsManagerScript.Instance.MaxWins;
+            EndGame();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+    
     private void HandleEndGame()
     {
         FreezeGame();
         UIManagerScript.Instance.DisplayFinishScreen(IsPlayer1Winner);
     }
+    
 }
 
 public enum GameState

@@ -15,7 +15,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Coins == SettingsManagerScript.Instance.MaxCoins)
         {
-            GameManagerScript.Instance.EndGame(gameObject.name == ObjectNames.PLAYER_1);
+            GameManagerScript.Instance.EndRound(gameObject.name == ObjectNames.PLAYER_1);
         }
     }
 }

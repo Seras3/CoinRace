@@ -57,7 +57,7 @@ public class LadderController : MonoBehaviour
         if (isClimbing)
         {
             _playerBody.velocity = new Vector3(
-                _playerControlsScript.controls.HorizontalAxis() * (-_playerMovement.walkSpeed), 
+                _playerControlsScript.controls.HorizontalAxis() * (-_playerMovement.MovementSpeed), 
                 _playerControlsScript.controls.VerticalAxis() * (speedUpDown),
                 _playerBody.velocity.z);
         }

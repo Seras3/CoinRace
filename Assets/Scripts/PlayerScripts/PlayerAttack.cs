@@ -48,8 +48,11 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        ComboAttacks();
-        ResetComboState();
+        if (!_playerAnimation.IsRunning)
+        {
+            ComboAttacks();
+            ResetComboState();
+        }
     }
 
     // Combos:

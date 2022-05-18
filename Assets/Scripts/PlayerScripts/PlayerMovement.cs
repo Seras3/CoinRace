@@ -8,8 +8,16 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation _playerAnimation;
     private PlayerControlsScript _playerControlsScript;
     private Rigidbody _myBody;
+    
+    
+    private float walkSpeed = 5, runSpeed = 6;
 
-    public float walkSpeed;
+    private bool _hasPressedFirstButton, _shouldResetFirstButton;
+    private KeyCode? _lastKeyPressed, _currentKeyPressed;
+    private float _timeOfFirstButton;
+    private float _timeToCatchRunning = 0.5f;
+
+    public float MovementSpeed => _playerAnimation.IsRunning ? runSpeed : walkSpeed;
     
     void Start()
     {
@@ -20,30 +28,56 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        AnimatePlayerWalk();
+        AnimatePlayerMovement();
     }
     
     void FixedUpdate()
     {
-        DetectMovement();
+        ApplyMovement();
     }
 
-    void DetectMovement()
+    void ApplyMovement()
     {
-        _myBody.velocity = new Vector3(_playerControlsScript.controls.HorizontalAxis() * (-walkSpeed),
-            _myBody.velocity.y,
-            _playerControlsScript.controls.VerticalAxis() * (-walkSpeed));
+        _myBody.velocity = new Vector3(_playerControlsScript.controls.HorizontalAxis() * (-MovementSpeed),
+                _myBody.velocity.y,
+                _playerControlsScript.controls.VerticalAxis() * (-MovementSpeed));
     }
 
-    void AnimatePlayerWalk()
+    void AnimatePlayerMovement()
     {
         if (_playerControlsScript.controls.HorizontalAxis() != 0 || _playerControlsScript.controls.VerticalAxis() != 0)
         {
             _playerAnimation.Walk(true);
+            CheckRunning();
         }
         else
         {
             _playerAnimation.Walk(false);
+            _playerAnimation.Run(false);
         }
+    }
+
+    void CheckRunning()
+    {
+        if (_playerControlsScript.GetMovementKeyPressed() == null)  { return; }
+        
+        _lastKeyPressed = _currentKeyPressed;
+        _currentKeyPressed = _playerControlsScript.GetMovementKeyPressed();
+        
+        
+        if(_currentKeyPressed == _lastKeyPressed) 
+        {
+            if(Time.time - _timeOfFirstButton < _timeToCatchRunning)
+            {
+                _playerAnimation.Run(true);
+            } 
+            else 
+            {
+                _lastKeyPressed = null;
+            }
+        }
+
+        _timeOfFirstButton = Time.time;
+
     }
 }

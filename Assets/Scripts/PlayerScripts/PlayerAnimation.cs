@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
+
+    public bool IsRunning  => animator.GetBool(AnimationTags.RUN);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,11 @@ public class PlayerAnimation : MonoBehaviour
     public void Walk(bool move) 
     {
         animator.SetBool(AnimationTags.MOVEMENT, move);
+    }
+    
+    public void Run(bool run) 
+    {
+        animator.SetBool(AnimationTags.RUN, run);
     }
     
     public void Punch1() 

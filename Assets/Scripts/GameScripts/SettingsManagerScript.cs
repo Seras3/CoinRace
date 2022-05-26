@@ -147,12 +147,14 @@ public class SettingsManagerScript : MonoBehaviour
     public void MusicVolumeControl(Single volume)
     {
         MusicVolume = volume;
+        SoundManagerScript.Instance.MusicVolume = volume;
         Storage.SetVolume(PlayerPrefsKeys.MUSIC_VOLUME, volume);
     }
     
     public void VFXVolumeControl(Single volume)
     {
         VFXVolume = volume;
+        SoundManagerScript.Instance.VFXVolume = volume;
         Storage.SetVolume(PlayerPrefsKeys.VFX_VOLUME, volume);
     }
 

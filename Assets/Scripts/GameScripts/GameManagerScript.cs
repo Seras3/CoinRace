@@ -27,6 +27,8 @@ public class GameManagerScript : MonoBehaviour
     
     public static int Player1Wins { get; private set; }
     public static int Player2Wins { get; private set; }
+    
+    private static bool _hasRoundEnded;
     private bool IsPlayer1Winner { get; set; }
 
     private bool HasFinishedGame { get; set; }
@@ -141,7 +143,6 @@ public class GameManagerScript : MonoBehaviour
             }
         }
         
-        
         StartCoroutine(EndRoundWithDelay(delay));
     }
     
@@ -175,6 +176,7 @@ public class GameManagerScript : MonoBehaviour
     {
         FreezeGame();
         UIManagerScript.Instance.DisplayPauseScreen();
+        SoundManagerScript.Instance.GameMusicPause();
     }
 
     private void HandleRestart()
@@ -185,12 +187,20 @@ public class GameManagerScript : MonoBehaviour
     
     private void HandlePlay()
     {
+        SoundManagerScript.Instance.GameMusicPlay();
         UnfreezeGame();
         UIManagerScript.Instance.HidePauseScreen();
+
+        if (_hasRoundEnded)
+        {
+            _hasRoundEnded = false;
+            SoundManagerScript.Instance.StartRoundSoundPlay();
+        }
     }
 
     private void HandleEndRound()
     {
+        SoundManagerScript.Instance.GameMusicPause();
         if (HasFinishedGame)
         {
             SoundManagerScript.Instance.LoudCrowdSoundPlay();
@@ -199,6 +209,7 @@ public class GameManagerScript : MonoBehaviour
         }
         else
         {
+            _hasRoundEnded = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

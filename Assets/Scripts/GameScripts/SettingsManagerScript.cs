@@ -177,43 +177,7 @@ public class SettingsManagerScript : MonoBehaviour
         MaxWins = 2;
         MaxCoins = 5;
         
-        var storageKeysToIterate = Storage.Keys.ToDictionary(
-            entry => entry.Key, 
-            entry => entry.Value);
-        
-        foreach(KeyValuePair<string, string> entry in storageKeysToIterate)
-        {
-            if (!PlayerPrefs.HasKey(entry.Key))
-            {
-                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
-                PlayerPrefs.SetString(entry.Key, entry.Value);
-            }
-            else
-            {
-                // print("ARE: " + entry.Key + " : " + entry.Value);
-                Storage.Keys[entry.Key] = PlayerPrefs.GetString(entry.Key);
-            }
-        }
-        
-        
-        var storageVolumes = Storage.Volumes.ToDictionary(
-            entry => entry.Key, 
-            entry => entry.Value);
-        
-        foreach(KeyValuePair<string, float> entry in storageVolumes)
-        {
-            if (!PlayerPrefs.HasKey(entry.Key))
-            {
-                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
-                PlayerPrefs.SetFloat(entry.Key, entry.Value);
-            }
-            else
-            {
-                // print("ARE: " + entry.Key + " : " + entry.Value);
-                Storage.Volumes[entry.Key] = PlayerPrefs.GetFloat(entry.Key);
-            }
-        }
-        
+        Storage.Init();
         
         Player1Controls = new PlayerControls(
             Converter.StringToKeyCode(Storage.Keys[PlayerPrefsKeys.P1_UP]), 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AnimationTags
@@ -120,6 +121,47 @@ public class Storage
         {PlayerPrefsKeys.PAUSE, KeyCode.P.ToString()}
     };
     
+    public static void Init()
+    {
+        var storageKeysToIterate = Keys.ToDictionary(
+            entry => entry.Key, 
+            entry => entry.Value);
+        
+        foreach(KeyValuePair<string, string> entry in storageKeysToIterate)
+        {
+            if (!PlayerPrefs.HasKey(entry.Key))
+            {
+                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
+                PlayerPrefs.SetString(entry.Key, entry.Value);
+            }
+            else
+            {
+                // print("ARE: " + entry.Key + " : " + entry.Value);
+                Storage.Keys[entry.Key] = PlayerPrefs.GetString(entry.Key);
+            }
+        }
+        
+        
+        var storageVolumes = Volumes.ToDictionary(
+            entry => entry.Key, 
+            entry => entry.Value);
+        
+        foreach(KeyValuePair<string, float> entry in storageVolumes)
+        {
+            if (!PlayerPrefs.HasKey(entry.Key))
+            {
+                // print("SETEAZA:" + entry.Key + " : " + entry.Value);
+                PlayerPrefs.SetFloat(entry.Key, entry.Value);
+            }
+            else
+            {
+                // print("ARE: " + entry.Key + " : " + entry.Value);
+                Storage.Volumes[entry.Key] = PlayerPrefs.GetFloat(entry.Key);
+            }
+        }
+    }
+    
+        
     public static Dictionary<string, float> Volumes = new Dictionary<string, float>()
     {
         {PlayerPrefsKeys.VFX_VOLUME, 1},

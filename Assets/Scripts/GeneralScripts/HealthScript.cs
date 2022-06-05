@@ -40,12 +40,9 @@ public class HealthScript : MonoBehaviour
             return;
         }
         
-        if (shouldKnockDown)
+        if (shouldKnockDown && Random.Range(0, 2) > 0)
         {
-            if (Random.Range(0, 2) > 0)
-            {
-                _animationScript.KnockDown();
-            }
+            _animationScript.KnockDown();
         }
         else
         {

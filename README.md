@@ -5,11 +5,13 @@ there are the two characters, the red player and the blue player. The action tak
 in a finite environment, bounded by the edges of a western movie-themed arena. 
 As the duel between two gunmen of that period brought suspense and concentration into the atmosphere,
 in the same landscape a fight is fought meant to stir up the same intense sensations. 
-The goal is a clear one, to collect the coins faster than your opponent.
+
+🟡 The goal is a clear one, to collect the coins faster than your opponent.
 As in any other competition, orienteering skills and dexterity have their say in
 the moment of such a race. The fastest certainly has an advantage in conquest
-the title of winner, but the speed does not fully ensure a victory. Before the opponent
-having the advantage of reaching the limit number of coins collected, it can be
+the title of winner, but the speed does not fully ensure a victory. 
+
+🥊 Before the opponent having the advantage of reaching the limit number of coins collected, it can be
 sabotaged or even decisively stopped by melee combat. This fact combines a cumulation of
 skills in a strategy that can benefit anyone at any time, keeping the tension
 and the hope of success in the soul of each.
